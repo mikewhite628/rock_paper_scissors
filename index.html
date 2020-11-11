@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+  
+
+        computerPlay = () => {
+           let p = Math.floor(Math.random()*3);
+            if (p === 0) {
+                p = 'ROCK'
+            } else if (p === 1) {
+                p ='PAPER';
+        } else {
+            p ='SCISSORS'
+        }      
+            console.log(`The computer chose ${p}`)  
+            return p;
+            
+        }
+        
+
+        //the generate a random output for the computer player
+
+
+        playRound = (playerSelection, computerSelection)  => {
+            console.log(`You chose ${playerSelection}`)
+            console.log(`the computer chose ${computerSelection}`) 
+            if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
+                console.log('You Lose!')
+            } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
+                console.log('You Win!')
+                } else if (playerSelection === computerSelection) {
+                console.log('It\'s a draw!')
+            } else if (playerSelection > computerSelection) {
+                console.log('You Win!')
+            }
+            }
+        //playRound(playerSlection, computerSelection)
+        //puts the player and the computers inputs against each other and determins which is greater
+        //and declares winner of the round like so "You lose! Paper beats Rock"
+
+        //return result;
+        //return the result of the comparison
+
+        const computerSelection = computerPlay();
+        const playerSelection = 'ROCK';
+        //playerSelection
+        //will take the players choice and delcare it ass an output
+        //make sure player selection is set the the same case
+
+        //computerSlection(computerPlay)
+        //will convert the computers selection to in input
+
+
+
+
+    </script>
+</body>
+</html>
