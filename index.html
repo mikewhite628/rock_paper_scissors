@@ -19,28 +19,76 @@
         } else {
             p ='SCISSORS'
         }      
-            console.log(`The computer chose ${p}`)  
-            return p;
-            
+            return p;   
         }
         
+        
+        let computerSelection = computerPlay();
+        let playerSelection;
+        let result;
+        
 
-        //the generate a random output for the computer player
+ 
+
+        getAnswer = () => {
+            i = 0
+            while (i < 5) {
+                let answer = prompt('Let the battle begin! Rock, Paper, or Scissors?')
+            answer = answer.toUpperCase();
+                { if (answer === "ROCK" || answer === "PAPER" || answer === "SCISSORS") {
+            return answer
+        } else {
+            alert('Please check your spelling and try again!')
+        }
+            }
+            }
+        }
 
 
         playRound = (playerSelection, computerSelection)  => {
+            computerSelection = computerPlay()
+            playerSelection = getAnswer()
             console.log(`You chose ${playerSelection}`)
-            console.log(`the computer chose ${computerSelection}`) 
-            if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK') {
-                console.log('You Lose!')
-            } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') {
-                console.log('You Win!')
-                } else if (playerSelection === computerSelection) {
-                console.log('It\'s a draw!')
-            } else if (playerSelection > computerSelection) {
-                console.log('You Win!')
+            console.log(`the computer chose ${computerSelection}`)
+           if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK' 
+            || playerSelection === 'PAPER' && computerSelection === 'SCISSORS'
+            || playerSelection === 'ROCK' && computerSelection === 'PAPER') {
+                result = `You Lose! ${playerSelection} looses to ${computerSelection}!`;
+             
+            } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS'
+            || playerSelection === 'PAPER' && computerSelection === 'ROCK'
+            || playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+                result = `You WIN! ${playerSelection} beats ${computerSelection}!`;
+              
+                } else { 
+                    playerSelection === computerSelection 
+                    result = `DRAW! You both played ${playerSelection}!`;
+
+                }
+            
+        }
+
+
+        game = () => {
+            let playerWins = 0;
+            let computerWins = 0;
+            let draws = 0;
+            for (rounds = 0; rounds < 5; rounds++) {
+            playRound();
+            return result;
             }
-            }
+            } 
+            
+        
+    
+
+        
+
+
+
+
+
+
         //playRound(playerSlection, computerSelection)
         //puts the player and the computers inputs against each other and determins which is greater
         //and declares winner of the round like so "You lose! Paper beats Rock"
@@ -48,8 +96,8 @@
         //return result;
         //return the result of the comparison
 
-        const computerSelection = computerPlay();
-        const playerSelection = 'ROCK';
+    
+        
         //playerSelection
         //will take the players choice and delcare it ass an output
         //make sure player selection is set the the same case
