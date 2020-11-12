@@ -24,8 +24,9 @@
         
         
         let computerSelection = computerPlay();
+        let result = 1;
         let playerSelection;
-        let result;
+        
         
 
  
@@ -53,34 +54,45 @@
            if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK' 
             || playerSelection === 'PAPER' && computerSelection === 'SCISSORS'
             || playerSelection === 'ROCK' && computerSelection === 'PAPER') {
-                result = `You Lose! ${playerSelection} looses to ${computerSelection}!`;
+                computerWins += 1;
+                console.log(`You Lose! ${playerSelection} looses to ${computerSelection}!`)
              
             } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS'
             || playerSelection === 'PAPER' && computerSelection === 'ROCK'
             || playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
-                result = `You WIN! ${playerSelection} beats ${computerSelection}!`;
+                playerWins += 1;
+                console.log(`You WIN! ${playerSelection} beats ${computerSelection}!`)
               
-                } else { 
-                    playerSelection === computerSelection 
-                    result = `DRAW! You both played ${playerSelection}!`;
-
+                } else if (playerSelection === computerSelection) {
+                    draws += 1;
+                    console.log(`DRAW! You both played ${playerSelection}!`);
                 }
+                
             
         }
-
-
-        game = () => {
             let playerWins = 0;
             let computerWins = 0;
             let draws = 0;
-            for (rounds = 0; rounds < 5; rounds++) {
+
+        game = () => {            
+            for (let rounds = 0; rounds < 5; rounds++) {
             playRound();
-            return result;
             }
-            } 
-            
-        
-    
+            displayScore();
+        }
+
+            displayScore = () => {
+                if (playerWins > computerWins) {
+                    console.log(`You have won the game ${playerWins} rounds to ${computerWins}!`)
+                } else if (computerWins > playerWins) {
+                    console.log(`You may have won some battles but you lost the war ${playerWins} rounds to ${computerWins}!`)
+                } else if (playerWins = computerWins) { 
+                   console.log(`Five rounds and a draw ehh? ${playerWins} to ${computerWins}!`)
+            }
+            playerWins = 0;
+            computerWins = 0;
+            draws = 0;
+        }
 
         
 
