@@ -89,13 +89,15 @@
                 } else if (playerWins = computerWins) { 
                    console.log(`Five rounds and a draw ehh? ${playerWins} to ${computerWins}!`)
             }
+            gameReset();
+        }
+
+        
+        gameReset = () => {
             playerWins = 0;
             computerWins = 0;
             draws = 0;
         }
-
-        
-
 
 
 
@@ -107,8 +109,6 @@
 
         //return result;
         //return the result of the comparison
-
-    
         
         //playerSelection
         //will take the players choice and delcare it ass an output
