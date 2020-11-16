@@ -6,11 +6,45 @@
     <title>Document</title>
 </head>
 <body>
+    <div id='container'>
+        <h1> Rock Paper Scissors Battle!</h1>
+
+            <button type='button' class='start-game'>Start Game!</button>
+
+            <div class='info'>
+            Rules!
+            </div>
+                <div class='player-choice'>
+                <button type='button' class='rock'>Rock</button>
+                <button type='button' class='paper'>Paper</button>
+                <button type='button' class='scissors'>Scissors</button>
+                </div>
+        <div class='scoreboard'>
+            ScoreBoard
+        </div>
+                <div class='computer-choice'>
+                    computer choice here
+                </div>
+        <div class='player wins'>
+            This player won
+        </div>
+
+    </div>
     <script>
 
-  
+        
+        const start = document.querySelector('.start-game')
+        const rock = document.querySelector('.rock')
+        const paper = document.querySelector('.paper')
+        const scissors = document.querySelector('.scissors')
+        const infoBox = document.querySelector('.info')
+        const computerInfo = document.querySelector('.computer-choice')
+        const scoreboard = document.querySelector('.scoreboard')
+
+
 
         computerPlay = () => {
+    
            let p = Math.floor(Math.random()*3);
             if (p === 0) {
                 p = 'ROCK'
@@ -21,64 +55,52 @@
         }      
             return p;   
         }
-        
-        
-        let computerSelection = computerPlay();
-        let result = 1;
-        let playerSelection;
-        
-        
 
  
 
-        getAnswer = () => {
-            i = 0
-            while (i < 5) {
-                let answer = prompt('Let the battle begin! Rock, Paper, or Scissors?')
-            answer = answer.toUpperCase();
-                { if (answer === "ROCK" || answer === "PAPER" || answer === "SCISSORS") {
-            return answer
-        } else {
-            alert('Please check your spelling and try again!')
-        }
-            }
-            }
-        }
-
-
-        playRound = (playerSelection, computerSelection)  => {
-            computerSelection = computerPlay()
-            playerSelection = getAnswer()
-            console.log(`You chose ${playerSelection}`)
-            console.log(`the computer chose ${computerSelection}`)
-           if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK' 
-            || playerSelection === 'PAPER' && computerSelection === 'SCISSORS'
-            || playerSelection === 'ROCK' && computerSelection === 'PAPER') {
+        getAnswers = () => {
+           playerSelection = event.target.className
+           computerSelection = computerPlay()
+           computerInfo.innerHTML = `The Computer Chose ${computerSelection}!`
+           if (event.target.className === 'scissors' && computerSelection === 'ROCK' 
+            || event.target.className === 'paper' && computerSelection === 'SCISSORS'
+            || event.target.className === 'rock' && computerSelection === 'PAPER') {
                 computerWins += 1;
-                console.log(`You Lose! ${playerSelection} looses to ${computerSelection}!`)
+                infoBox.innerHTML = `You Lose! ${playerSelection.toUpperCase()} looses to ${computerSelection}!`
              
-            } else if (playerSelection === 'ROCK' && computerSelection === 'SCISSORS'
-            || playerSelection === 'PAPER' && computerSelection === 'ROCK'
-            || playerSelection === 'SCISSORS' && computerSelection === 'PAPER') {
+            } else if (event.target.className === 'rock' && computerSelection === 'SCISSORS'
+            || event.target.className === 'paper' && computerSelection === 'ROCK'
+            || event.target.className === 'scissors' && computerSelection === 'PAPER') {
                 playerWins += 1;
-                console.log(`You WIN! ${playerSelection} beats ${computerSelection}!`)
-              
-                } else if (playerSelection === computerSelection) {
+                infoBox.innerHTML = `You WIN! ${playerSelection.toUpperCase()} beats ${computerSelection}!`
+
+                } else if (event.target.className.toUpperCase() === computerSelection) {
                     draws += 1;
-                    console.log(`DRAW! You both played ${playerSelection}!`);
+                    infoBox.innerHTML = `DRAW! You both played ${playerSelection}!`;
                 }
-                
-            
+                scoreUpdate()
+                return computerSelection
         }
+
+
+
+
             let playerWins = 0;
             let computerWins = 0;
             let draws = 0;
 
-        game = () => {            
-            for (let rounds = 0; rounds < 5; rounds++) {
-            playRound();
-            }
-            displayScore();
+        game = () => {   
+            alert('Please Select your choice!')
+            infoBox.innerHTML = 'Please Select your choice!' 
+            gameReset();
+            return 'gg'
+        }
+        
+
+        scoreUpdate = () => {
+            score = scoreboard.innerHTML = `Player Score: ${playerWins} vs Computer Score: ${computerWins} <br>
+            Draws: ${draws}!`
+            return score;
         }
 
             displayScore = () => {
@@ -87,7 +109,7 @@
                 } else if (computerWins > playerWins) {
                     console.log(`You may have won some battles but you lost the war ${playerWins} rounds to ${computerWins}!`)
                 } else if (playerWins = computerWins) { 
-                   console.log(`Five rounds and a draw ehh? ${playerWins} to ${computerWins}!`)
+                   console.log(`Five rounds and a draw ehh? ${playerWins} to ${computerWins} with ${draws}!`)
             }
             gameReset();
         }
@@ -99,8 +121,11 @@
             draws = 0;
         }
 
-
-
+        
+        start.addEventListener('click', game)
+        rock.addEventListener('click', getAnswers)
+        scissors.addEventListener('click', getAnswers)
+        paper.addEventListener('click', getAnswers)
 
 
         //playRound(playerSlection, computerSelection)
