@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
     <div id='container'>
+    <div class='wrapper'>
         <h1> Rock Paper Scissors Battle!</h1>
 
-            <button type='button' class='start-game'>Start Game!</button>
 
+
+            <button type='button' class='start-game'>Start Game!</button>
+        
             <div class='info'>
             Rules!
             </div>
+    </div>
+    <div class='game-wrapper'>
                 <div class='player-choice'>
                 <button type='button' class='rock'>Rock</button>
                 <button type='button' class='paper'>Paper</button>
@@ -25,11 +31,7 @@
                 <div class='computer-choice'>
                     computer choice here
                 </div>
-        <div class='player wins'>
-            This player won
-        </div>
 
-    </div>
     <script>
 
         
@@ -59,6 +61,7 @@
  
 
         getAnswers = () => {
+            let gamesPlayed = 0
            playerSelection = event.target.className
            computerSelection = computerPlay()
            computerInfo.innerHTML = `The Computer Chose ${computerSelection}!`
@@ -84,13 +87,11 @@
 
 
 
-
             let playerWins = 0;
             let computerWins = 0;
             let draws = 0;
 
-        game = () => {   
-            alert('Please Select your choice!')
+        game = () => { 
             infoBox.innerHTML = 'Please Select your choice!' 
             gameReset();
             return 'gg'
@@ -98,10 +99,31 @@
         
 
         scoreUpdate = () => {
-            score = scoreboard.innerHTML = `Player Score: ${playerWins} vs Computer Score: ${computerWins} <br>
+            if (playerWins + computerWins + draws == 5 && playerWins > computerWins) {
+                gameOver()
+                scoreboard.innerHTML = 'WINNER!!!!'
+                alert('You Win!')
+                gameReset()
+            } else if (playerWins + computerWins + draws === 5 && computerWins > playerWins) {
+                gameOver()
+                scoreboard.innerHTML = 'LA-OOOSSE-ER!'
+                alert('You Lose!')
+                gameReset()
+            }else if (playerWins + computerWins + draws === 5 && computerWins === playerWins) {
+                gameOver()
+                scoreboard.innerHTML = 'YOU SOMEHOW TIED WITH A COMPUTER??? DOES NOT COMPUTE!!'
+                alert('ITS A DRAW!')
+                gameReset()
+            } else { score = scoreboard.innerHTML = `Player Score: ${playerWins} vs Computer Score: ${computerWins} <br>
             Draws: ${draws}!`
-            return score;
         }
+    }
+
+    gameOver = () => {
+        infoBox.innerHTML = 'GAME OVER!'
+    }
+
+    
 
             displayScore = () => {
                 if (playerWins > computerWins) {
