@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+
+#container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+body {
+    background: linear-gradient(180deg, #F670C1,#32DEFD);
+   width: 100%;
+   min-height: 100vh;
+   background-size: cover;
+   color: white;
+   font-family: 'Goldman';
+}
+
+h1 {
+    font-family: 'Goldman', cursive, sans-serif;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    border: 3px solid white;
+    margin-right: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+
+}
+
+.start-game {
+
+   justify-content: center;
+   width: 150px;
+   text-align: center;
+   margin: auto;
+   height: 40px;
+   border: none;
+   border-radius: 25px;
+
+}
+
+.info {
+    width: 530px;
+    justify-content: center;
+    margin: auto;
+    border: 2px solid white;
+    border-radius: 25px;
+    margin-top: 15px;
+    height: 70px;
+    font-size: 25px;
+    text-align: center;
+
+    
+}
+
+.game-wrapper {
+display: flex;
+flex-direction: row;
+margin: auto;
+margin-top: 60px;
+
+
+}
+.player-choice {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+    margin-left: 20px;
+
+
+
+}
+
+.rock {
+    height:50px;
+    width: 100px
+}
+
+.paper{
+    height:50px;
+    width: 100px
+}
+
+.scissors {
+    height:50px;
+    width: 100px
+}
+
+.scoreboard {
+    border: 2px dashed white;
+    flex-grow: 1;
+    width: 200px;
+    font-size: 20px;
+    
+    
+}
+
+.computer-choice {
+    border: 2px solid white;
+    margin-right: 40px;
+    margin-left: 40px;
+    font-size: 20px;
+
+}
