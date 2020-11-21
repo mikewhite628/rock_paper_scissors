@@ -1,1 +1,1 @@
-With this project I'll be building a simple rock paper scissors game using javascript!
+Built a rock paper scissors game using Javascript HTML and CSS
